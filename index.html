@@ -34,6 +34,8 @@
     box-shadow: 0 12px 40px rgba(17, 255, 239, 0.15);
 }
 
+
+
 .kb-image-card img {
     width: 100%;
     height: auto;
@@ -1705,7 +1707,18 @@ eFAWATEERcom:
                     </button>
                     <div id="content-${itemKey}" class="hidden px-6 pb-6 border-t border-white/5">
                         <div class="pt-4">
-                            <pre class="whitespace-pre-wrap font-sans text-slate-300 leading-relaxed text-base bg-transparent p-0 m-0">${escapeHtml(item.content)}</pre>
+                            ${itemKey === 'mainAccount' ? 
+                                `<div class="whitespace-pre-wrap font-sans text-slate-300 leading-relaxed text-base">${escapeHtml(item.content).replace(/\n/g, '<br>')}</div>
+                                <div class="mt-6 flex flex-col md:flex-row gap-2 justify-start items-center">
+                                        <div class="rounded-xl overflow-hidden border border-white/10 shadow-lg max-w-xs cursor-pointer hover:border-cyan-500/50 transition-all" onclick="openLightbox('step1.jpeg')">
+                                            <img src="step1.jpeg" alt="خطوة 1" class="w-full h-auto object-cover max-h-80">
+                                        </div>
+                                        <div class="rounded-xl overflow-hidden border border-white/10 shadow-lg max-w-xs cursor-pointer hover:border-cyan-500/50 transition-all" onclick="openLightbox('step2.jpeg')">
+                                            <img src="step2.jpeg" alt="خطوة 2" class="w-full h-auto object-cover max-h-80">
+                                        </div>
+                                </div>` :
+                                `<pre class="whitespace-pre-wrap font-sans text-slate-300 leading-relaxed text-base bg-transparent p-0 m-0">${escapeHtml(item.content)}</pre>`
+                            }
                         </div>
                     </div>
                 </div>
@@ -2220,7 +2233,42 @@ Restrictions:
             if (e.key === 'Escape' && isAIChatOpen) {
                 toggleAIChat();
             }
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
         });
+
+        // Lightbox functions
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('imageLightbox');
+            const lightboxImg = document.getElementById('lightboxImage');
+            if (lightbox && lightboxImg) {
+                lightboxImg.src = imageSrc;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('imageLightbox');
+            if (lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
     </script>
+
+    <!-- Image Lightbox -->
+    <div class="kb-lightbox" id="imageLightbox" onclick="closeLightbox()">
+        <div class="kb-lightbox-content" onclick="event.stopPropagation()">
+            <button class="kb-lightbox-close" onclick="closeLightbox()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <img id="lightboxImage" src="" alt="صورة مكبرة">
+        </div>
+    </div>
 </body>
 </html>
