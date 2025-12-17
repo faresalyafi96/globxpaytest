@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1600" viewBox="0 0 720 1600">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8f8f4" />
+      <stop offset="100%" stop-color="#f8fdfa" />
+    </linearGradient>
+    <linearGradient id="modal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6fffb" />
+      <stop offset="100%" stop-color="#eef7f5" />
+    </linearGradient>
+  </defs>
+  <rect width="720" height="1600" fill="url(#bg2)"/>
+  <rect x="46" y="120" width="628" height="1360" rx="52" fill="#fff" stroke="#cbe2d9" stroke-width="6"/>
+  <text x="360" y="250" fill="#1f5d76" font-size="40" font-family="Cairo" text-anchor="middle" font-weight="700">GlobXpay</text>
+  <text x="360" y="310" fill="#29607a" font-size="24" font-family="Cairo" text-anchor="middle">تحديد طريقة التحقق</text>
+  <rect x="140" y="480" width="440" height="400" rx="32" fill="#fff" stroke="#d1e9e0" stroke-width="4" filter="url(#shadow)"/>
+  <rect x="160" y="520" width="400" height="320" rx="28" fill="url(#modal)" stroke="#d1e4de" stroke-width="2"/>
+  <text x="360" y="590" fill="#1e2a32" font-size="28" font-family="Cairo" text-anchor="middle" font-weight="700">اختر طريقة رمز التحقق</text>
+  <g transform="translate(220 640)">
+    <rect width="280" height="80" rx="18" fill="#f1f6f3" stroke="#d6e7de" stroke-width="2"/>
+    <text x="140" y="50" fill="#1e2a32" font-size="24" font-family="Cairo" text-anchor="middle" font-weight="600">SMS</text>
+  </g>
+  <g transform="translate(220 740)">
+    <rect width="280" height="80" rx="18" fill="#e8f5ed" stroke="#c7e3d6" stroke-width="2"/>
+    <text x="140" y="50" fill="#1aa74a" font-size="24" font-family="Cairo" text-anchor="middle" font-weight="600">WhatsApp</text>
+  </g>
+  <text x="360" y="1050" fill="#1f5d76" font-size="26" font-family="Cairo" text-anchor="middle">نافذة اختيار قناة التحقق</text>
+</svg>
