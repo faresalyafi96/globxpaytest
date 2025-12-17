@@ -865,7 +865,11 @@
 
 👉 بمجرد تحميل التطبيق وتسجيل بياناتك، يتم فتح حساب EZ رئيسي لك تلقائيًا بدون حد أدنى للرصيد.
 
-أهلاً وسهلاً بك عميلنا العزيز كمستخدم لتطبيق GlobXpay! 😊`
+أهلاً وسهلاً بك عميلنا العزيز كمستخدم لتطبيق GlobXpay! 😊`,
+                        images: [
+                            'assets/account-main-step1.svg',
+                            'assets/account-main-step2.svg'
+                        ]
                     },
                     supplementaryAccount: {
                         title: "إنشاء حساب تابع",
@@ -1492,7 +1496,8 @@ eFAWATEERcom:
                         categoryTitle: category.title,
                         itemKey,
                         title: item.title,
-                        content: item.content
+                        content: item.content,
+                        images: item.images || []
                     });
                 });
             });
@@ -1503,6 +1508,25 @@ eFAWATEERcom:
         let currentView = 'home';
         let activeCategory = null;
         let expandedItem = null;
+
+        function renderItemContent(item) {
+            const textBlock = `<pre class="whitespace-pre-wrap font-sans text-slate-300 leading-relaxed text-base bg-transparent p-0 m-0">${escapeHtml(item.content)}</pre>`;
+
+            if (!item.images || item.images.length === 0) return textBlock;
+
+            const imagesBlock = `
+                <div class="grid md:grid-cols-2 gap-4">
+                    ${item.images.map((src, idx) => `
+                        <figure class="bg-slate-900/40 border border-white/10 rounded-xl overflow-hidden">
+                            <img src="${src}" alt="لقطة شاشة لإنشاء الحساب الرئيسي - ${idx + 1}" class="w-full h-auto border-b border-white/5">
+                            <figcaption class="px-4 py-3 text-sm text-slate-300">اللقطة ${idx + 1} من عملية إنشاء الحساب الرئيسي</figcaption>
+                        </figure>
+                    `).join('')}
+                </div>
+            `;
+
+            return `${textBlock}${imagesBlock}`;
+        }
 
         // Initialize
         function init() {
@@ -1561,8 +1585,8 @@ eFAWATEERcom:
                         </svg>
                     </button>
                     <div id="content-${itemKey}" class="hidden px-6 pb-6 border-t border-white/5">
-                        <div class="pt-4">
-                            <pre class="whitespace-pre-wrap font-sans text-slate-300 leading-relaxed text-base bg-transparent p-0 m-0">${escapeHtml(item.content)}</pre>
+                        <div class="pt-4 space-y-4">
+                            ${renderItemContent(item)}
                         </div>
                     </div>
                 </div>
