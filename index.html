@@ -1174,11 +1174,17 @@
 استخدم بطاقة GLOBXPAY للسحب من أي صراف آلي محلياً أو دولياً
 
 للتحقق من رمز PIN:
-1. افتح تطبيق GlobXpay
+1. افتح تطبيق GlobXpay بالإنجليزي
 2. اذهب إلى تبويب Cards
 3. اختر بطاقتك
 4. اضغط Card Settings
 5. اختر Show PIN - سيظهر رمز PIN بشكل آمن
+
+• الحد الأقصى للمعاملة الواحدة: 500-2000 دينار
+• السحب اليومي: 500 دينار (قد يزيد حسب البنك/الصراف)
+• السحب الشهري: 15,000 دينار
+• عدد المعاملات اليومية: 5-8
+• عدد المعاملات الشهرية: 30
 
 💰 رسوم السحب:
 • محلياً (الأردن): 1.00 دينار
@@ -1189,7 +1195,7 @@
                         content: `💵 تحويل مباشر إلى حسابك البنكي (IBAN):
 
 خطوات التحويل:
-1. افتح تطبيق GlobX
+1. افتح تطبيق GlobX بالإنجليزي
 2. اختر Payments
 3. اضغط Transfer to Bank
 4. اختر الحساب المراد السحب منه
@@ -1765,7 +1771,51 @@ eFAWATEERcom:
             const optionsContent = {
                 portal: {
                     title: 'Portal',
-                    content: 'المحتوى الخاص بـ Portal سيتم إضافته هنا...'
+                    subItems: {
+                        verifyWithCustomer: {
+                            title: 'Verify With Customer',
+                            content: `1- انتقل إلى Account Inquiry
+2- انسخ رقم الهاتف المحمول والصقه في مربع البحث
+3- ستجد (ID number + date of birth)
+4- انسخ رقمه والصقه
+5- انتقل إلى Account Transactions والصقه في مربع البحث`,
+                            hasImages: true,
+                            images: ['Portal/Verify CX/v1.png','Portal/Verify CX/v2.png','Portal/Verify CX/v3.png']
+                        },
+                        accountTransactions: {
+                            title: 'Account Transactions',
+                            content: `1- انسخ رقم الهاتف المحمول 
+2- انتقل إلى Account Transaction
+3- ألصق رقمه/رقمها في مربع البحث`,
+                            hasImages: true,
+                            images: ['Portal/ac.png']
+                        },
+                        cardDetails: {
+                            title: 'Card Details',
+                            content: `1- انسخ رقم الهاتف المحمول
+2- انتقل إلى "Cards-Card"
+3- انتقل إلى "Show Advance Filter"
+4- أدخل رقم الهاتف المحمول في الحقل`,
+                            hasImages: true,
+                            images: ['Portal/Card Details/1c.png', 'Portal/Card Details/2c.png']
+                        },
+                        cliqCashIn: {
+                            title: 'Cliq cash-in',
+                            content: `1- انسخ رقم الهاتف المحمول
+2- انتقل إلى سجلات Cliq
+3- ألصقه في مربع البحث`,
+                            hasImages: true,
+                            images: ['Portal/Cliqin.png']
+                        },
+                        ibanCashOut: {
+                            title: 'Iban cash-out',
+                            content: `1- انسخ الاسم الكامل (يمكنك الحصول على اسمه الكامل من خلال Account Inquiry)
+2- انتقل إلى Transfer IBANS
+3- تقوم بلصق اسمه الكامل و من ثم البحث`,
+                            hasImages: true,
+                            images: ['Portal/Ibancashout.png']
+                        }
+                    }
                 },
                 front: {
                     title: 'Front',
@@ -1790,7 +1840,7 @@ eFAWATEERcom:
 7- الضغط على Next
 8- الضغط على View Limits`,
                             hasImages: true,
-                            images: ['Front guid pictures/Card limits/1limit.png', 'Front guid pictures/Card limits/2limit.png', 'Front guid pictures/Card limits/4limit.png', 'Front guid pictures/Card limits/5limit.png', 'Front guid pictures/Card limits/6limit.png']
+                            images: ['Front guid pictures/Card limits/1limit.png', 'Front guid pictures/Card limits/2limit.png', 'Front guid pictures/Card limits/3limit.png', 'Front guid pictures/Card limits/4limit.png', 'Front guid pictures/Card limits/5limit.png', 'Front guid pictures/Card limits/6limit.png']
                         },
                         resendCardPIN: {
                             title: 'Resend Card PIN',
@@ -1804,7 +1854,7 @@ eFAWATEERcom:
 8- إدخال رقم البطاقة الكامل
 9- الضغط على Send Request`,
                             hasImages: true,
-                            images: ['Front guid pictures/Resend PIN request/1pinr.png', 'Front guid pictures/Resend PIN request/2pinr.png','Front guid pictures/Resend PIN request/4pinr.png', 'Front guid pictures/Resend PIN request/5pinr.png', 'Front guid pictures/Resend PIN request/6pinr.png', 'Front guid pictures/Resend PIN request/7pinr.png', 'Front guid pictures/Resend PIN request/8pinr.png']
+                            images: ['Front guid pictures/Resend PIN request/1pinr.png', 'Front guid pictures/Resend PIN request/2pinr.png', 'Front guid pictures/Resend PIN request/3pinr.png', 'Front guid pictures/Resend PIN request/4pinr.png', 'Front guid pictures/Resend PIN request/5pinr.png', 'Front guid pictures/Resend PIN request/6pinr.png', 'Front guid pictures/Resend PIN request/7pinr.png', 'Front guid pictures/Resend PIN request/8pinr.png']
                         },
                         unblockCardPIN: {
                             title: 'Unblock Card PIN',
@@ -1818,7 +1868,7 @@ eFAWATEERcom:
 8- الضغط على PIN Unblock
 9- الضغط على السهم أعلى المربع لإرسال الطلب`,
                             hasImages: true,
-                            images: ['Front guid pictures/Unblock card PIN/1pinu.png', 'Front guid pictures/Unblock card PIN/2pinu.png', 'Front guid pictures/Unblock card PIN/4pinu.png', 'Front guid pictures/Unblock card PIN/5pinu.png']
+                            images: ['Front guid pictures/Unblock card PIN/1pinu.png', 'Front guid pictures/Unblock card PIN/2pinu.png', 'Front guid pictures/Unblock card PIN/3pinu.png', 'Front guid pictures/Unblock card PIN/4pinu.png', 'Front guid pictures/Unblock card PIN/5pinu.png']
                         },
                         activateCard: {
                             title: 'Activate Card',
@@ -1834,13 +1884,50 @@ eFAWATEERcom:
 10- الضغط على Next
 11- الضغط على Send Request`,
                             hasImages: true,
-                            images: ['Front guid pictures/Card activation/1a.png', 'Front guid pictures/Card activation/2a.png', 'Front guid pictures/Card activation/4a.png', 'Front guid pictures/Card activation/5a.png', 'Front guid pictures/Card activation/6a.png', 'Front guid pictures/Card activation/7a.png']
+                            images: ['Front guid pictures/Card activation/1a.png', 'Front guid pictures/Card activation/2a.png', 'Front guid pictures/Card activation/3a.png', 'Front guid pictures/Card activation/4a.png', 'Front guid pictures/Card activation/5a.png', 'Front guid pictures/Card activation/6a.png','Front guid pictures/Card activation/7a.png']
                         }
                     }
                 },
                 back: {
                     title: 'Back',
-                    content: 'المحتوى الخاص بـ Back سيتم إضافته هنا...'
+                    subItems: {
+                        checkCardIssues: {
+                            title: 'Check Card Issues',
+                            content: `1- نتقل إلى "Transaction"
+2- انقر على "Online Authorization"
+3- انقر للبحث من خلال صورة "المنظار"
+4- أدخل علامة النسبة المئوية (%) متبوعة بآخر 4 أرقام من رقم البطاقة
+5- انقر على "صورة المنظار"
+6- سيظهر سبب المشكلة باللون الأحمر في عمود "Response"
+7- انقر صورة "قلم مع دفتر" لمزيد من التفاصيل`,
+                            hasImages: true,
+                            images: ['Back/Check-Card-Issues/i1.png', 'Back/Check-Card-Issues/i2.png', 'Back/Check-Card-Issues/i3.png', 'Back/Check-Card-Issues/i4.png']                        },
+                        checkCardLimits: {
+                            title: 'Check Card Limits',
+                            content: `1. انتقل إلى "CARD BUILDER"
+2. انقر على "Card"
+3. في حقل "رقم البطاقة"، أدخل "%" متبوعًا بآخر 4 أرقام من البطاقة
+4. انقر على صورة "المنظار"
+5. انقر على "قلم مع دفت"
+6. اختر "Card Limit" لعرض حدود البطاقة`,
+                            hasImages: true,
+                            images: ['Back/Check-Card-Limits/l1.png', 'Back/Check-Card-Limits/l2.png', 'Back/Check-Card-Limits/l3.png', 'Back/Check-Card-Limits/l4.png']                        },
+                        checkCardTransactions: {
+                            title: 'Check Card Transactions',
+                            content: `1. انتقل إلى "CARD BUILDER"
+2. انقر على "Card"
+3. في حقل "رقم البطاقة"، أدخل "%" متبوعًا بآخر 4 أرقام من البطاقة
+4. انقر على صورة "المنظار"
+5. انقر على "قلم مع دفتر"
+6. اختيار "Accounts"
+7. انقر على "قلم مع دفتر"
+8. اختيار "Account Activity" لعرض معاملات البطاقة، ثم انقر على "Show Activity"
+   أو اختيار "Pending Account Activity" للتحقق من المعاملات التي لم يُحولها مالك نقطة البيع بعد و بعدها انقر على "Show Activity"
+   أو اختيار "Amount" للتحقق من الرصيد المُتاح في الحساب
+   أو اختيار "Old Activity" للمعاملات التي تمت منذ فترة طويلة`,
+                            hasImages: true,
+                            images: ['Back/Check-Card-Transactions/t1.png', 'Back/Check-Card-Transactions/t2.png', 'Back/Check-Card-Transactions/t3.png', 'Back/Check-Card-Transactions/t4.png','Back/Check-Card-Transactions/t5.png', 'Back/Check-Card-Transactions/t6.png', 'Back/Check-Card-Transactions/t7.png', 'Back/Check-Card-Transactions/t8.png']                        }
+                    }
                 }
             };
 
