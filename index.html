@@ -884,6 +884,7 @@
         </div>
     </div>
 
+    <script src="config.js"></script>
     <script>
         // Complete Knowledge Base Data
         const knowledgeBase = {
@@ -1672,6 +1673,21 @@ eFAWATEERcom:
                 </div>
             `).join('');
             
+            // إضافة بطاقة Download في grid الفئات
+            const downloadCard = `
+                <div onclick="openDownloadCategory()" class="group p-6 bg-slate-800/50 border border-white/10 rounded-2xl cursor-pointer card-hover">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400/20 to-cyan-500/20 flex items-center justify-center mb-4 group-hover:from-cyan-400/30 group-hover:to-cyan-500/30 transition-all">
+                        <svg class="w-7 h-7 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 group-hover:text-cyan-400 transition-colors">DOWNLOAD</h3>
+                    <p class="text-slate-400 text-sm">تنزيل ملف PDF</p>
+                </div>
+            `;
+            
             // إضافة بطاقة Options في grid الفئات
             const optionsCard = `
                 <div onclick="openOptionsCategory()" class="group p-6 bg-slate-800/50 border border-white/10 rounded-2xl cursor-pointer card-hover">
@@ -1687,7 +1703,7 @@ eFAWATEERcom:
                 </div>
             `;
             
-            grid.innerHTML = categoriesHtml + optionsCard;
+            grid.innerHTML = categoriesHtml + downloadCard + optionsCard;
         }
 
         // Show view
@@ -1713,11 +1729,22 @@ eFAWATEERcom:
             activeCategory = key;
             const category = knowledgeBase[key];
             
+            // Add download button for company category
+            const downloadButton = key === 'company' ? `
+                <button onclick="downloadPDF()" class="px-5 py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white rounded-xl font-semibold flex items-center gap-2 transition-all duration-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    تنزيل PDF
+                </button>
+            ` : '';
+            
             document.getElementById('categoryHeader').innerHTML = `
                 <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-cyan-500 flex items-center justify-center shadow-lg shadow-cyan-500/25">
                     ${category.icon.replace('text-cyan-400', 'text-white')}
                 </div>
-                <h2 class="text-3xl font-bold">${category.title}</h2>
+                <h2 class="text-3xl font-bold flex-1">${category.title}</h2>
+                ${downloadButton}
             `;
 
             document.getElementById('categoryItems').innerHTML = Object.entries(category.content).map(([itemKey, item]) => `
@@ -1746,6 +1773,71 @@ eFAWATEERcom:
                     </div>
                 </div>
             `).join('');
+
+            expandedItem = null;
+            showView('category');
+        }
+
+        // Open Download Category
+        function openDownloadCategory() {
+            activeCategory = 'download';
+            
+            const downloadIcon = `<svg class="w-7 h-7 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>`;
+            
+            document.getElementById('categoryHeader').innerHTML = `
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-cyan-500 flex items-center justify-center shadow-lg shadow-cyan-500/25">
+                    ${downloadIcon.replace('text-cyan-400', 'text-white')}
+                </div>
+                <h2 class="text-3xl font-bold flex-1">DOWNLOAD</h2>
+            `;
+
+            // Get files from config.js
+            const files = (typeof config !== 'undefined' && config.files) ? config.files : [];
+            
+            if (files.length === 0) {
+                document.getElementById('categoryItems').innerHTML = `
+                    <div class="bg-slate-800/50 border border-white/10 rounded-2xl overflow-hidden p-8">
+                        <div class="text-center">
+                            <p class="text-slate-400">لا توجد ملفات متاحة للتنزيل</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                document.getElementById('categoryItems').innerHTML = files.map((file, index) => {
+                    // Escape single quotes in filename for safe use in onclick
+                    const safeFileName = file.file.replace(/'/g, "\\'");
+                    return `
+                    <div class="bg-slate-800/50 border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-cyan-500/30">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400/20 to-cyan-500/20 flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                                            <polyline points="10 9 9 9 8 9"></polyline>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-xl font-semibold text-slate-200">${escapeHtml(file.name)}</h3>
+                                </div>
+                                <button onclick="downloadPDF('${safeFileName}')" class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white rounded-xl font-semibold flex items-center gap-2 transition-all duration-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    </svg>
+                                    تنزيل
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                }).join('');
+            }
 
             expandedItem = null;
             showView('category');
@@ -2055,7 +2147,71 @@ eFAWATEERcom:
             expandedItem = content.classList.contains('hidden') ? null : itemKey;
         }
 
-        // Handle search
+        function downloadPDF(fileName) {
+            if (!fileName) {
+                console.error('اسم الملف مطلوب');
+                return;
+            }
+            
+            // استخدام XMLHttpRequest للملفات المحلية (يعمل بشكل أفضل من fetch)
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', fileName, true);
+            xhr.responseType = 'blob';
+            
+            xhr.onload = function() {
+                if (xhr.status === 200 || xhr.status === 0) {
+                    // إنشاء رابط تنزيل من blob
+                    const blob = xhr.response;
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = fileName;
+                    link.style.display = 'none';
+                    
+                    document.body.appendChild(link);
+                    link.click();
+                    
+                    // تنظيف
+                    setTimeout(() => {
+                        document.body.removeChild(link);
+                        window.URL.revokeObjectURL(url);
+                    }, 100);
+                } else {
+                    // إذا فشل XMLHttpRequest، جرب الطريقة البديلة
+                    console.warn('فشل XMLHttpRequest، جاري تجربة الطريقة البديلة...');
+                    tryFallbackDownload(fileName);
+                }
+            };
+            
+            xhr.onerror = function() {
+                console.warn('خطأ في XMLHttpRequest، جاري تجربة الطريقة البديلة...');
+                tryFallbackDownload(fileName);
+            };
+            
+            xhr.send();
+        }
+        
+        // طريقة بديلة للتنزيل
+        function tryFallbackDownload(fileName) {
+            try {
+                const link = document.createElement('a');
+                link.href = fileName;
+                link.download = fileName;
+                link.style.display = 'none';
+                
+                document.body.appendChild(link);
+                link.click();
+                
+                setTimeout(() => {
+                    document.body.removeChild(link);
+                }, 100);
+            } catch (error) {
+                console.error('فشلت الطريقة البديلة:', error);
+                alert('حدث خطأ أثناء تنزيل الملف: ' + fileName + '\nتأكد من وجود الملف في المجلد.');
+            }
+        }
+
+      
         function handleSearch(query) {
             if (query.trim() === '') {
                 showView('home');
