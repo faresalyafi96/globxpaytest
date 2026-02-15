@@ -1806,11 +1806,20 @@ eFAWATEERcom:
                 document.getElementById('categoryItems').innerHTML = files.map((file, index) => {
                     // Escape single quotes in filename for safe use in onclick
                     const safeFileName = file.file.replace(/'/g, "\\'");
+                    const fileKey = `download-file-${index}`;
+                    const hasSteps = file.steps && file.steps.length > 0;
+                    const stepsHtml = hasSteps ? file.steps.map((step, stepIndex) => `
+                        <li class="flex items-start gap-3 text-slate-300">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-sm font-semibold mt-0.5">${stepIndex + 1}</span>
+                            <span class="flex-1 pt-0.5">${escapeHtml(step)}</span>
+                        </li>
+                    `).join('') : '';
+                    
                     return `
                     <div class="bg-slate-800/50 border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-cyan-500/30">
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
-                                <div class="flex items-center gap-4">
+                                <div class="flex items-center gap-4 flex-1">
                                     <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400/20 to-cyan-500/20 flex items-center justify-center">
                                         <svg class="w-6 h-6 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -1820,15 +1829,38 @@ eFAWATEERcom:
                                             <polyline points="10 9 9 9 8 9"></polyline>
                                         </svg>
                                     </div>
-                                    <h3 class="text-xl font-semibold text-slate-200">${escapeHtml(file.name)}</h3>
+                                    <h3 class="text-xl font-semibold text-slate-200 flex-1">${escapeHtml(file.name)}</h3>
                                 </div>
-                                <button onclick="downloadPDF('${safeFileName}')" class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white rounded-xl font-semibold flex items-center gap-2 transition-all duration-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                    </svg>
-                                    تنزيل
-                                </button>
+                                <div class="flex items-center gap-3">
+                                    ${hasSteps ? `
+                                    <button onclick="toggleDownloadSteps('${fileKey}')" class="px-4 py-2 bg-slate-700/50 hover:bg-slate-600/50 text-slate-300 hover:text-cyan-400 rounded-xl font-medium flex items-center gap-2 transition-all duration-300 border border-white/10 hover:border-cyan-500/30">
+                                        <svg id="icon-${fileKey}" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                        الخطوات
+                                    </button>
+                                    ` : ''}
+                                    <button onclick="downloadPDF('${safeFileName}')" class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white rounded-xl font-semibold flex items-center gap-2 transition-all duration-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                        </svg>
+                                        تنزيل
+                                    </button>
+                                </div>
                             </div>
+                            ${hasSteps ? `
+                            <div id="steps-${fileKey}" class="hidden border-t border-white/5 pt-4 mt-4">
+                                <h4 class="text-lg font-semibold text-cyan-400 mb-4 flex items-center gap-2">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                                    </svg>
+                                    خطوات العملية
+                                </h4>
+                                <ol class="space-y-3 list-none">
+                                    ${stepsHtml}
+                                </ol>
+                            </div>
+                            ` : ''}
                         </div>
                     </div>
                 `;
@@ -2204,6 +2236,17 @@ eFAWATEERcom:
             } catch (error) {
                 console.error('فشلت الطريقة البديلة:', error);
                 alert('حدث خطأ أثناء تنزيل الملف: ' + fileName + '\nتأكد من وجود الملف في المجلد.');
+            }
+        }
+        
+        // Toggle download steps
+        function toggleDownloadSteps(fileKey) {
+            const stepsDiv = document.getElementById(`steps-${fileKey}`);
+            const icon = document.getElementById(`icon-${fileKey}`);
+            
+            if (stepsDiv && icon) {
+                stepsDiv.classList.toggle('hidden');
+                icon.classList.toggle('rotate-90');
             }
         }
 
