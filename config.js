@@ -2,19 +2,33 @@ const config = {
     files: [
         {
             name: 'تنزيل ملف ترخيص الشركة ',
-            file: 'globxpaypres.pdf'
+            file: 'globxpaypres.pdf',
+            steps: []
         },
-               {
+        {
             name: 'تنزيل ملف نموذج تغير الرقم',
-            file: 'Change number form.pdf'
+            file: 'Change number form.pdf',
+            steps: [
+                'Verify the customer identity',
+                'Ask the customer to fill the Change Phone Number Form',
+                'Ask the customer to provide his ID (Front and Back)',
+                'Once the customer send the needed documents send email to compliance team , cc Operations & Customer support'
+            ]
         },
-               {
+        {
             name: 'تنزيل ملف Charge Back',
-            file: 'Chargeback form.pdf'
+            file: 'Chargeback form.pdf',
+            steps: [
+                'Verify the customer identity',
+                'Check the transaction that the customer is talking about',
+                'Ask the customer to fill the Charge back form : Mention to the customer that the result might take up to 45 days',
+                'Once the customer send the form, send the email to operations team'
+            ]
         },
         {
             name: 'تنزيل ملف Globx Agent Networks',
-            file: 'GlobXpay Networks.xlsx'
+            file: 'GlobXpay Networks.xlsx',
+            steps: []
         }
     ]
 };
