@@ -672,12 +672,15 @@
         }
     </style>
 </head>
-<body class="gradient-bg min-h-screen text-white">
-    <!-- Decorative Background -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
-    </div>
+<body class="min-h-screen text-white" style="
+    background-image: url('ForWebsite2.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #0f172a;
+">
+<!-- طبقة تعتيم -->
+<div style="position: fixed; inset: 0; background: rgba(10, 18, 35, 0.70); z-index: 0; pointer-events: none;"></div>
 
     <div id="app" class="relative z-10">
         <!-- Header -->
