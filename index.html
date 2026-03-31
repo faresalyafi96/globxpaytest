@@ -1160,9 +1160,21 @@
 4. افتح تطبيق GlobXpay
 5. اختر Send / Receive International Transfer
 6. أدخل رقم المرجع
-7. اضغط Receive`
+7. اضغط Receive
+
+
+ملاحظة: يوجد عمولة حسب المبلغ 
+
+
+
+`,
+
+     
+
+
                     }
                 }
+                
             },
             cashOut: {
                 title: "طرق السحب (Cash Out)",
@@ -1753,18 +1765,31 @@ eFAWATEERcom:
                     </button>
                     <div id="content-${itemKey}" class="hidden px-6 pb-6 border-t border-white/5">
                         <div class="pt-4">
-                            ${itemKey === 'mainAccount' ? 
-                                `<div class="whitespace-pre-wrap font-sans text-slate-300 leading-relaxed text-base">${escapeHtml(item.content).replace(/\n/g, '<br>')}</div>
-                                <div class="mt-6 flex flex-col md:flex-row gap-2 justify-start items-center">
-                                        <div class="rounded-xl overflow-hidden border border-white/10 shadow-lg max-w-xs cursor-pointer hover:border-cyan-500/50 transition-all" onclick="openLightbox('step1.jpeg')">
-                                            <img src="step1.jpeg" alt="خطوة 1" class="w-full h-auto object-cover max-h-80">
-                                        </div>
-                                        <div class="rounded-xl overflow-hidden border border-white/10 shadow-lg max-w-xs cursor-pointer hover:border-cyan-500/50 transition-all" onclick="openLightbox('step2.jpeg')">
-                                            <img src="step2.jpeg" alt="خطوة 2" class="w-full h-auto object-cover max-h-80">
-                                        </div>
-                                </div>` :
-                                `<pre class="whitespace-pre-wrap font-sans text-slate-300 leading-relaxed text-base bg-transparent p-0 m-0">${escapeHtml(item.content)}</pre>`
-                            }
+
+                                                       
+
+
+
+                          ${itemKey === 'mainAccount' ? 
+    `<div class="whitespace-pre-wrap font-sans text-slate-300 leading-relaxed text-base">${escapeHtml(item.content).replace(/\n/g, '<br>')}</div>
+    <div class="mt-6 flex flex-col md:flex-row gap-2 justify-start items-center">
+            <div class="rounded-xl overflow-hidden border border-white/10 shadow-lg max-w-xs cursor-pointer hover:border-cyan-500/50 transition-all" onclick="openLightbox('step1.jpeg')">
+                <img src="step1.jpeg" alt="خطوة 1" class="w-full h-auto object-cover max-h-80">
+            </div>
+            <div class="rounded-xl overflow-hidden border border-white/10 shadow-lg max-w-xs cursor-pointer hover:border-cyan-500/50 transition-all" onclick="openLightbox('step2.jpeg')">
+                <img src="step2.jpeg" alt="خطوة 2" class="w-full h-auto object-cover max-h-80">
+            </div>
+    </div>` :
+
+ itemKey === 'alSaudiExchange' ?
+    `<div class="whitespace-pre-wrap font-sans text-slate-300 leading-relaxed text-base">${escapeHtml(item.content).replace(/\n/g, '<br>')}</div>
+    <div class="mt-4 cursor-pointer hover:border-cyan-500/50 transition-all rounded-xl overflow-hidden border border-white/10 shadow-lg" onclick="openLightbox('SaudEX.png')">
+       <img src="SaudEX.png" alt="جدول العمولات" class="h-auto object-cover" style="max-width: 250px;">
+    </div>` :
+                                
+    `<pre class="whitespace-pre-wrap font-sans text-slate-300 leading-relaxed text-base bg-transparent p-0 m-0">${escapeHtml(item.content)}</pre>`
+    
+}
                         </div>
                     </div>
                 </div>
