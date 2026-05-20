@@ -22,8 +22,9 @@ const config = {
                 'Verify the customer identity',
                 'Check the transaction that the customer is talking about',
                 'Ask the customer to fill the Charge back form : Mention to the customer that the result might take up to 45 days',
-                'Once the customer send the form, send the email to operations team'
-            ]
+                'Once the customer send the form, send the email to operations team',
+                'يرجى العلم أنه في حال رغبة العميل بتقديم نموذج اعتراض، يتم استيفاء رسوم بقيمة 5 JOD أو 7 USD تكون الرسوم مستردة في حال ثبت وجود خطأ بالحركة وكان الاعتراض صحيح، أما إذا تبين أن الحركة سليمة ولا يوجد فيها أي خطأ، فتكون الرسوم غير مستردة'
+                     ]
         },
         {
             name: 'تنزيل ملف Globx Agent Networks',
