@@ -1162,7 +1162,7 @@
 3. بعد الدفع، ستحصل على فاتورة برقم مرجعي
 4. افتح تطبيق GlobXpay
 5. اختر Send / Receive International Transfer
-6. أدخل رقم المرجع
+6. أدخل رقم المرجعي
 7. اضغط Receive
 
 
@@ -1641,7 +1641,41 @@ eFAWATEERcom:
 🌟 GLOBXPAY — خدمات مالية مبتكرة وذكية بين يديك لتبني مستقبلك بثقة.`
                     }
                 }
-            }
+            },
+
+            valetaxGuide: {
+    title: "Valetax Guide",
+    icon: `<svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M12 4v16m8-8H4"/>
+    </svg>`,
+
+    content: {
+        createAccount: {
+            title: "كيفية إنشاء الحساب",
+            content: `
+-قم بإنشاء حساب Valetax من موقعهم الالكتروني 
+-وبعد انشاء الحساب يوجد خيار اسمه "Pay With Globxpay Wallet" من موقعهم
+-سيتم ارسال لك رابط يمكنك من خلالها تحميل المتجر
+-بعد تنزيل التطبيق قم بوضع اسم الشركة "Valetax"وبعدها "Log in by reference number" 
+-بعد ان تقوم بوضع معلوماتك و تكمل باقي الخطوات جميعها سيتم تفعيل حسابك خلال 24 ساعة 
+`
+        },
+
+        cardCost: {
+            title: "تكلفة إصدار البطاقة و الإجراءات المطلوبة",
+            content: `
+بالنسبة لبطاقات Valetax,البطاقات صار يتحملها العميل نفسه 
+سعر البطاقه + سعر التوصيل (من الSheet) بتلاقيها بالDownloads
+
+بالنسبة للدولار سعر البطاقة 20 دولار + رسوم التوصيل للي بدو البطاقة بالدولار 
+سعر البطاقة ال  10 دنانير + رسوم التوصيل للي بدو البطاقة بالدينار
+
+بس بتبلغو الكستمر يودع سعر البطاقة + رسوم التوصيل بعد ما تطلعوها من الشيت وبتبعتو ايميل لل Operations برقم العميل وانه عميل Valetax ونوع البطاقة الي بدو اياها وعنوانه (بتبعتو الايميل بس تتأكدو انه الكستنر اودع المبلغ بحسابه (سعر البطاقة + سعر التوصيل)
+`
+        }
+    }
+},
         };
 
         // Flatten knowledge base for search
@@ -1698,6 +1732,8 @@ eFAWATEERcom:
                     <p class="text-slate-400 text-sm">تنزيل ملف PDF</p>
                 </div>
             `;
+
+           
             
             // إضافة بطاقة Options في grid الفئات
             const optionsCard = `
@@ -1822,6 +1858,8 @@ eFAWATEERcom:
 
             // Get files from config.js
             const files = (typeof config !== 'undefined' && config.files) ? config.files : [];
+            const files1 = (typeof config !== 'undefined' && config.files1) ? config.files1 : [];
+
             
             if (files.length === 0) {
                 document.getElementById('categoryItems').innerHTML = `
