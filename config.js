@@ -30,6 +30,12 @@ const config = {
             name: 'تنزيل ملف Globx Agent Networks',
             file: 'GlobXpay Networks.xlsx',
             steps: []
-        }
+        },
+          {
+            name: 'GlobXpay-Aramex Delivery Charges',
+            file: 'GlobXpay-Aramex Delivery Charges.xlsx',
+            steps: []
+        },
+        
     ]
 };
