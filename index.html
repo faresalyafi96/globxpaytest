@@ -1828,6 +1828,12 @@ eFAWATEERcom:
     <div class="mt-4 cursor-pointer hover:border-cyan-500/50 transition-all rounded-xl overflow-hidden border border-white/10 shadow-lg" onclick="openLightbox('SaudEX.png')">
        <img src="SaudEX.png" alt="جدول العمولات" class="h-auto object-cover" style="max-width: 250px;">
     </div>` :
+
+ itemKey === 'transactionLimits' ?
+    `<div class="whitespace-pre-wrap font-sans text-slate-300 leading-relaxed text-base">${escapeHtml(item.content).replace(/\n/g, '<br>')}</div>
+    <div class="mt-4 cursor-pointer hover:border-cyan-500/50 transition-all rounded-xl overflow-hidden border border-white/10 shadow-lg" onclick="openLightbox('ServiceTransactionLimit.jpeg')">
+       <img src="ServiceTransactionLimit.jpeg" alt="حدود المعاملات" class="w-full h-auto object-cover max-h-96">
+    </div>` :
                                 
     `<pre class="whitespace-pre-wrap font-sans text-slate-300 leading-relaxed text-base bg-transparent p-0 m-0">${escapeHtml(item.content)}</pre>`
     
