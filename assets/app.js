@@ -640,7 +640,6 @@ function viewArticle(id) {
             <div class="article-tools">
                 ${fileBtn}${licenseBtn}
                 <button class="btn btn-ghost" onclick="copyLink()">${ICON.link} ${esc(t.copyLink)}</button>
-                <button class="btn btn-ghost" onclick="window.print()">${ICON.print} ${esc(t.print)}</button>
             </div>
 
             <article class="prose">
