@@ -21,6 +21,7 @@ const CATEGORIES_EN = {
     cards:           { title: 'Prepaid Cards',          description: 'Issuing, managing and card limits' },
     transfers:       { title: 'Transfers',              description: 'Internal and external transfers' },
     braceletLink:    { title: 'Linking a Bracelet to a Supplementary Account', description: 'Steps to link a bracelet to a supplementary account' },
+    saudiExchange:   { title: 'Al Saudi Exchange',      description: 'Al Saudi Exchange remittance procedures' },
     fees:            { title: 'Fees & Limits',          description: 'Fees, commissions and transaction limits' },
     policies:        { title: 'Policies & Compliance',  description: 'Policies, compliance and regulatory procedures' },
     troubleshooting: { title: 'Troubleshooting',        description: 'Solutions to common customer issues' },
@@ -900,8 +901,8 @@ Just inform the customer to deposit the card price + delivery fees after you loo
 6. Select "Card Limit" to view the card limits`
 },
 
-'guides.saudiExchange.deleteRemittance': {
-    title: 'Al Saudi Exchange — Deleting a Remittance',
+'saudiExchange.deleteRemittance': {
+    title: 'Deleting an Al Saudi Exchange Remittance',
     content: `1- Go to the login screen
 2- Make sure the search box contains "Saudi exchange"
 3- Go to "Home - User"
