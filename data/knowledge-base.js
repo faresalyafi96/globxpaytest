@@ -528,6 +528,20 @@ const knowledgeBase = {
             }
         }
     },
+    saudiExchange: {
+        title: "السعودي للصرافة",
+        icon: `<svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8h13m0 0l-3-3m3 3l-3 3M21 16H8m0 0l3-3m-3 3l3 3"/></svg>`,
+        content: {
+            deleteRemittance: {
+                title: "حذف حوالة السعودي للصرافة",
+                content: `1- قم بالذهاب الى شاشة تسجيل الدخول
+2- تأكد من ان مربع البحث مكتوب فيه "Saudi exchange"
+3- الذهاب الى "الرئيسية- المستخدم"
+4- بعد تسجيل الدخول الذهاب الى خيار "استقبال و ارسال الحوالات المالية"
+5- اضغط على "سجل التحويل" و بعدها حذف الحوالة`
+            }
+        }
+    },
     fees: {
         title: "الرسوم والحدود",
         icon: `<svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>`,
@@ -969,19 +983,6 @@ const optionsContent = {
                 hasImages: true,
                 images: ['Back/Check-Card-Transactions/t1.png', 'Back/Check-Card-Transactions/t2.png', 'Back/Check-Card-Transactions/t3.png', 'Back/Check-Card-Transactions/t4.png','Back/Check-Card-Transactions/t5.png', 'Back/Check-Card-Transactions/t6.png', 'Back/Check-Card-Transactions/t7.png', 'Back/Check-Card-Transactions/t8.png']                        }
         }
-    },
-    saudiExchange: {
-        title: 'السعودي للصرافة',
-        subItems: {
-            deleteRemittance: {
-                title: 'حذف حوالة السعودي للصرافة',
-                content: `1- قم بالذهاب الى شاشة تسجيل الدخول
-2- تأكد من ان مربع البحث مكتوب فيه "Saudi exchange"
-3- الذهاب الى "الرئيسية- المستخدم"
-4- بعد تسجيل الدخول الذهاب الى خيار "استقبال و ارسال الحوالات المالية"
-5- اضغط على "سجل التحويل" و بعدها حذف الحوالة`
-            }
-        }
     }
 };
 
@@ -1031,6 +1032,7 @@ const CATEGORY_DESC = {
     cards:           'إصدار البطاقات وإدارتها وحدودها',
     transfers:       'التحويلات الداخلية والخارجية',
     braceletLink:    'خطوات ربط الإسوارة بحساب تابع',
+    saudiExchange:   'إجراءات حوالات السعودي للصرافة',
     fees:            'الرسوم والعمولات وحدود المعاملات',
     policies:        'السياسات والالتزام والإجراءات التنظيمية',
     troubleshooting: 'حلول للمشاكل الشائعة التي تواجه العملاء',
@@ -1174,3 +1176,22 @@ const FAQS = ARTICLES
 
 const CATEGORY_BY_ID = Object.fromEntries(CATEGORIES.map(c => [c.id, c]));
 const ARTICLE_BY_ID  = Object.fromEntries(ARTICLES.map(a => [a.id, a]));
+
+/* ============================================================================
+   تجميع الأقسام — لتقصير القائمة الجانبية وتسهيل الوصول.
+   أي قسم جديد لا يُذكر هنا يظهر تلقائياً في المجموعة الأخيرة.
+   ============================================================================ */
+const CATEGORY_GROUPS = [
+    { id: 'accountsGroup', ids: ['accounts', 'accountCreation'] },
+    { id: 'moneyGroup',    ids: ['cashIn', 'cashOut', 'transfers', 'saudiExchange'] },
+    { id: 'cardsGroup',    ids: ['cards', 'braceletLink'] },
+    { id: 'rulesGroup',    ids: ['fees', 'policies'] },
+    { id: 'refGroup',      ids: ['company', 'guides', 'forms', 'media', 'valetaxGuide'] }
+];
+
+/* ترتيب مسطّح يضمن ظهور أي قسم غير مُصنّف */
+const GROUPED_IDS = new Set(CATEGORY_GROUPS.flatMap(g => g.ids));
+const UNGROUPED = CATEGORIES.filter(c => !GROUPED_IDS.has(c.id) && c.id !== 'contact' && c.id !== 'troubleshooting');
+if (UNGROUPED.length) {
+    CATEGORY_GROUPS[CATEGORY_GROUPS.length - 1].ids.push(...UNGROUPED.map(c => c.id));
+}
