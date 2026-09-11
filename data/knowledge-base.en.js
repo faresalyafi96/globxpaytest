@@ -21,7 +21,7 @@ const CATEGORIES_EN = {
     cards:           { title: 'Prepaid Cards',          description: 'Issuing, managing and card limits' },
     transfers:       { title: 'Transfers',              description: 'Internal and external transfers' },
     braceletLink:    { title: 'Linking a Bracelet to a Supplementary Account', description: 'Steps to link a bracelet to a supplementary account' },
-    saudiExchange:   { title: 'Al Saudi Exchange',      description: 'Al Saudi Exchange remittance procedures' },
+    saudiExchange:   { title: 'Deleting an Al Saudi Exchange Remittance', description: 'Steps to delete a remittance from the Al Saudi Exchange system' },
     fees:            { title: 'Fees & Limits',          description: 'Fees, commissions and transaction limits' },
     policies:        { title: 'Policies & Compliance',  description: 'Policies, compliance and regulatory procedures' },
     troubleshooting: { title: 'Troubleshooting',        description: 'Solutions to common customer issues' },
