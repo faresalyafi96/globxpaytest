@@ -529,7 +529,7 @@ const knowledgeBase = {
         }
     },
     saudiExchange: {
-        title: "السعودي للصرافة",
+        title: "حذف حوالة السعودي للصرافة",
         icon: `<svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8h13m0 0l-3-3m3 3l-3 3M21 16H8m0 0l3-3m-3 3l3 3"/></svg>`,
         content: {
             deleteRemittance: {
@@ -1032,7 +1032,7 @@ const CATEGORY_DESC = {
     cards:           'إصدار البطاقات وإدارتها وحدودها',
     transfers:       'التحويلات الداخلية والخارجية',
     braceletLink:    'خطوات ربط الإسوارة بحساب تابع',
-    saudiExchange:   'إجراءات حوالات السعودي للصرافة',
+    saudiExchange:   'خطوات حذف حوالة من نظام السعودي للصرافة',
     fees:            'الرسوم والعمولات وحدود المعاملات',
     policies:        'السياسات والالتزام والإجراءات التنظيمية',
     troubleshooting: 'حلول للمشاكل الشائعة التي تواجه العملاء',
