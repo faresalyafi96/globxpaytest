@@ -327,12 +327,12 @@ function formatContent(text, query) {
         if (!buffer.length) return;
         if (mode === 'ol') {
             const list = '<ol>' + buffer.map(x =>
-                `<li><span class="n">${x.n}</span><span>${query ? highlight(x.txt, query) : esc(x.txt)}</span></li>`
+                `<li><span class="n">${x.n}</span><span dir="auto">${query ? highlight(x.txt, query) : esc(x.txt)}</span></li>`
             ).join('') + '</ol>';
             html += stepsGroup(list, buffer.map(x => `${x.n}. ${x.txt}`));
         } else if (mode === 'ul') {
             html += '<ul>' + buffer.map(x =>
-                `<li><span class="b"></span><span>${query ? highlight(x, query) : esc(x)}</span></li>`
+                `<li><span class="b"></span><span dir="auto">${query ? highlight(x, query) : esc(x)}</span></li>`
             ).join('') + '</ul>';
         } else {
             html += `<p>${buffer.map(x => query ? highlight(x, query) : esc(x)).join('<br>')}</p>`;
@@ -616,12 +616,15 @@ function viewArticle(id) {
         ? `<a class="btn btn-ghost" href="globxpaypres.pdf" download>${ICON.down} ${esc(t.download)} PDF</a>` : '';
 
     const artSteps = aSteps(a);
+    /* خطوات إنجليزية (ltrSteps): كتلة كاملة من اليسار لليمين بعنوان وترقيم إنجليزي */
+    const ltr = !!a.ltrSteps;
     const stepsBlock = (artSteps && artSteps.length)
-        ? `<h3>${esc(t.steps)}</h3>` + stepsGroup(
+        ? (ltr ? '<div class="ltr-steps" dir="ltr" lang="en">' : '') +
+          `<h3>${ltr ? 'Steps' : esc(t.steps)}</h3>` + stepsGroup(
             '<ol>' + artSteps.map((s, i) =>
-                `<li><span class="n">${i + 1}</span><span>${esc(s)}</span></li>`).join('') + '</ol>',
+                `<li><span class="n">${i + 1}</span><span dir="auto">${esc(s)}</span></li>`).join('') + '</ol>',
             artSteps.map((s, i) => `${i + 1}. ${s}`)
-          )
+          ) + (ltr ? '</div>' : '')
         : '';
 
     $('view').innerHTML = `
@@ -644,7 +647,7 @@ function viewArticle(id) {
 
             <article class="prose">
                 ${stepsBlock}
-                ${aContent(a) ? formatContent(aContent(a)) : ''}
+                ${(!artSteps.length && aContent(a)) ? formatContent(aContent(a)) : ''}
                 ${shots(a.images, a.copyableImages)}
             </article>
 
