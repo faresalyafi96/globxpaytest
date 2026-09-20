@@ -29,7 +29,8 @@ const CATEGORIES_EN = {
     valetaxGuide:    { title: 'Valetax Guide',          description: 'Guidance specific to the Valetax service' },
     guides:          { title: 'System Guides',          description: 'Step-by-step guides for Portal, Front and Back' },
     media:           { title: 'Images',                 description: 'Ready-to-send images you can copy for customers' },
-    forms:           { title: 'Forms & Files',          description: 'Forms and files ready to download' }
+    forms:           { title: 'Forms & Files',          description: 'Forms and files ready to download' },
+    customerInfo:    { title: 'Edit Customer Information (Undertaking / Number Change / IDWise)', description: 'Forms and procedures for updating customer details and documents' }
 };
 
 const ARTICLES_EN = {
@@ -943,23 +944,15 @@ You can copy the image and send it directly to the customer when they ask about 
 /* أسماء النماذج والملفات (المحتوى نفسه خطوات إجرائية) */
 const FORMS_EN = {
     'تنزيل ملف ترخيص الشركة ': 'Company licence file',
-    'تنزيل ملف نموذج تغير الرقم': 'Phone number change form',
     'تنزيل ملف Charge Back': 'Chargeback form',
     'تنزيل ملف Globx Agent Networks': 'GlobXpay agent networks',
     'GlobXpay-Aramex Delivery Charges': 'GlobXpay–Aramex delivery charges',
-    'أسعار إصدار البطاقات وأسعار التوصيل': 'Card issuance prices & delivery charges',
-    'نموذج تعهد Empty': 'Undertaking form (blank)'
+    'أسعار إصدار البطاقات وأسعار التوصيل': 'Card issuance prices & delivery charges'
 };
 
 /* خطوات النماذج بالإنجليزية — مفهرسة باسم الملف (وليس بترتيبه)
    حتى لا تختل المطابقة عند إضافة ملف جديد في منتصف القائمة. */
 const FORM_STEPS_EN = {
-    'Change number form.pdf': [
-        'Verify the customer identity',
-        'Ask the customer to fill the Change Phone Number Form',
-        'Ask the customer to provide his ID (Front and Back)',
-        'Once the customer sends the needed documents, send an email to the compliance team, cc Operations & Customer Support'
-    ],
     'Chargeback form.pdf': [
         'Verify the customer identity',
         'Check the transaction that the customer is talking about',
@@ -972,9 +965,5 @@ const FORM_STEPS_EN = {
         'Each sheet shows the card name in Arabic and English, the price, and the currency (JOD or USD)',
         'The "Card deliveries" sheet contains delivery prices for all countries',
         'Make sure to select the correct sheet for the entity the customer belongs to before quoting a price'
-    ],
-    'نموذج تعهد Empty.docx': [
-        'If the ID is broken at the edge, or the text on the ID is unclear or the numbers are worn out',
-        'We provide them with the undertaking form and also ask them to provide supporting documents'
     ]
 };
