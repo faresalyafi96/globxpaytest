@@ -1132,6 +1132,55 @@ Object.entries(mediaLibrary).forEach(([key, item]) => {
     });
 });
 
+/* ---------- تعديل معلومات العميل (تعهد / تغيير الرقم / IDWise) ----------
+   كل عنصر هنا نموذج قابل للتنزيل + خطوات الإجراء. */
+const customerInfoForms = {
+    undertaking: {
+        title: 'Undertaking Form',
+        file: 'UndertakingForm.docx',
+        steps: [
+            'If the ID card has a broken corner, the text is unclear, the numbers are erased, it is damaged, or it is expired.',
+            "We provide them with the undertaking form and also ask them to supply supporting documents, such as a driver's license or passport.",
+            'An email is sent to the Compliance Department with the subject line: "Document Renewal Undertaking – [Name] – Mobile Number: [Number]." CC: Operation/Customer support',
+            'If it asks to re-insert the documents, then you need to send Email to the Operation with the subject line: "IDWise Deactivation Request" - [Name] – Mobile Number: [Number]'
+        ]
+    },
+    phoneNumberChange: {
+        title: 'Phone Number Change Request',
+        file: 'Change number form.pdf',
+        steps: [
+            'Verify the customer identity',
+            'Ask the customer to fill the Change Phone Number Form',
+            'Ask the customer to provide his ID (Front and Back)',
+            'An email is sent to the Compliance Department with the subject line: "Change Number Request – [Name] – Mobile Number: [Number]." CC: Operation/Customer support'
+        ]
+    }
+};
+
+const CUSTOMER_INFO_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0112 0" stroke-linecap="round"/><path d="M15.5 13.5l4-4 1.5 1.5-4 4H15.5v-1.5z" stroke-linejoin="round"/></svg>';
+
+CATEGORIES.push({
+    id: 'customerInfo',
+    title: 'تعديل معلومات العميل (تعهد/تغيير الرقم/ID wise)',
+    description: 'نماذج وإجراءات تعديل بيانات العميل ووثائقه',
+    icon: CUSTOMER_INFO_ICON
+});
+
+Object.entries(customerInfoForms).forEach(([key, f]) => {
+    ARTICLES.push({
+        id: 'customerInfo.' + key,
+        category: 'customerInfo',
+        title: f.title,
+        summary: makeSummary(f.steps[0]),
+        content: f.steps.join('\n'),   /* للبحث فقط — الخطوات تُعرض من steps */
+        steps: f.steps,
+        ltrSteps: true,   /* الخطوات إنجليزية: تُعرض من اليسار لليمين بترقيم إنجليزي */
+        file: f.file,
+        tags: makeTags(f.title, 'تعديل معلومات العميل'),
+        images: []
+    });
+});
+
 /* ---------- النماذج والملفات ---------- */
 const FORM_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
@@ -1182,7 +1231,7 @@ const ARTICLE_BY_ID  = Object.fromEntries(ARTICLES.map(a => [a.id, a]));
    أي قسم جديد لا يُذكر هنا يظهر تلقائياً في المجموعة الأخيرة.
    ============================================================================ */
 const CATEGORY_GROUPS = [
-    { id: 'accountsGroup', ids: ['accounts', 'accountCreation'] },
+    { id: 'accountsGroup', ids: ['accounts', 'accountCreation', 'customerInfo'] },
     { id: 'moneyGroup',    ids: ['cashIn', 'cashOut', 'transfers', 'saudiExchange'] },
     { id: 'cardsGroup',    ids: ['cards', 'braceletLink'] },
     { id: 'rulesGroup',    ids: ['fees', 'policies'] },
