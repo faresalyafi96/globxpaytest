@@ -6,16 +6,6 @@ const config = {
             steps: []
         },
         {
-            name: 'تنزيل ملف نموذج تغير الرقم',
-            file: 'Change number form.pdf',
-            steps: [
-                'Verify the customer identity',
-                'Ask the customer to fill the Change Phone Number Form',
-                'Ask the customer to provide his ID (Front and Back)',
-                'Once the customer send the needed documents send email to compliance team , cc Operations & Customer support'
-            ]
-        },
-        {
             name: 'تنزيل ملف Charge Back',
             file: 'Chargeback form.pdf',
             steps: [
@@ -45,15 +35,6 @@ const config = {
                 'صفحة "Card deliveries" تحتوي على أسعار التوصيل لجميع الدول',
                 'تأكد من اختيار الصفحة الصحيحة حسب الجهة التي يتبع لها العميل قبل إخباره بالسعر'
             ]
-        },
-        {
-            name: 'نموذج تعهد Empty',
-            file: 'نموذج تعهد Empty.docx',
-            steps: ['إذا كانت الهوية طرفعها مكسور او الخط اللي بالهوية مش واضح او ممحي الأرقام فيها',
-                'بنزودهم بنموذج التعهد وايضاً نخبرهم بتزويدنا بوثائق معززة '
-                
-            ]
-        },
-        
+        }
     ]
 };
