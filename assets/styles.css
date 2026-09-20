@@ -424,6 +424,11 @@ main { flex: 1; padding: 28px 20px 56px; }
     padding: 12px 15px; margin: 8px 0 15px; font-size: 14.4px; line-height: 1.75;
 }
 
+/* خطوات إنجليزية داخل صفحة عربية */
+.ltr-steps { text-align: left; }
+.ltr-steps ol li { flex-direction: row; }
+.ltr-steps .n { font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif; }
+
 /* مجموعة خطوات + زر نسخها */
 .steps-group { position: relative; margin-bottom: 15px; }
 .steps-group > ol { margin-bottom: 0; }
