@@ -584,8 +584,6 @@ Gold Card (USD):
 • Local ATM withdrawal: 1.00 JOD
 • International ATM withdrawal: 4 USD minimum + 3% exchange fee
 • Local POS/online purchases: free
-• International purchases (less than 20 JOD): 0.25 JOD
-• For USD (less than 28 USD): 0.30 USD
 • Dormant account: 2 JOD/month`
 },
 
