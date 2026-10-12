@@ -1144,7 +1144,7 @@ const customerInfoForms = {
         ]
     },
     phoneNumberChange: {
-        title: 'Phone Number Change Request',
+        title: 'نموذج طلب تغيير الرقم',
         file: 'Change number form.pdf',
         steps: [
             'التحقق من هوية العميل.',
