@@ -1134,23 +1134,23 @@ Object.entries(mediaLibrary).forEach(([key, item]) => {
    كل عنصر هنا نموذج قابل للتنزيل + خطوات الإجراء. */
 const customerInfoForms = {
     undertaking: {
-        title: 'Undertaking Form',
+        title: 'نموذج التعهد',
         file: 'UndertakingForm.docx',
         steps: [
-            'If the ID card has a broken corner, the text is unclear, the numbers are erased, it is damaged, or it is expired.',
-            "We provide them with the undertaking form and also ask them to supply supporting documents, such as a driver's license or passport.",
-            'An email is sent to the Compliance Department with the subject line: "Document Renewal Undertaking – [Name] – Mobile Number: [Number]." CC: Operation/Customer support',
-            'If it asks to re-insert the documents, then you need to send Email to the Operation with the subject line: "IDWise Deactivation Request" - [Name] – Mobile Number: [Number]'
+            'في حال كانت بطاقة الهوية مكسورة الزاوية، أو كان النص غير واضح، أو الأرقام ممسوحة، أو كانت البطاقة تالفة أو منتهية الصلاحية.',
+            "نقوم بتزويدهم بنموذج التعهد ونطلب منهم أيضاً تقديم مستندات داعمة، مثل رخصة القيادة أو جواز السفر.",
+            'يتم إرسال بريد إلكتروني إلى قسم الامتثال (Compliance Department) يتضمن عنوان الرسالة التالي: "Document Renewal Undertaking – [الاسم] – Mobile Number: [الرقم]"، مع وضع Operation/Customer support في نسخة من الرسالة (CC).',
+            'إذا طُلب إعادة إدخال المستندات، فيجب عليك إرسال بريد إلكتروني إلى قسم العمليات (Operation) يتضمن عنوان الرسالة التالي: "IDWise Deactivation Request" - [الاسم] – Mobile Number: [الرقم]'
         ]
     },
     phoneNumberChange: {
         title: 'Phone Number Change Request',
         file: 'Change number form.pdf',
         steps: [
-            'Verify the customer identity',
-            'Ask the customer to fill the Change Phone Number Form',
-            'Ask the customer to provide his ID (Front and Back)',
-            'An email is sent to the Compliance Department with the subject line: "Change Number Request – [Name] – Mobile Number: [Number]." CC: Operation/Customer support'
+            'التحقق من هوية العميل.',
+            'الطلب من العميل تعبئة نموذج تغيير رقم الهاتف.',
+            'الطلب من العميل تقديم بطاقة الهوية (الوجهين الأمامي والخلفي).',
+            'إرسال بريد إلكتروني إلى قسم الامتثال يتضمن عنوان الرسالة التالي: "طلب تغيير رقم الهاتف – [الاسم] – رقم الهاتف المحمول: [الرقم]"، مع إدراج Operation/Customer support في نسخة من الرسالة (CC).'
         ]
     }
 };
