@@ -304,7 +304,7 @@ let STEP_BLOCKS = [];
 /* غلاف قائمة خطوات مع زر نسخ */
 function stepsGroup(innerHtml, plainSteps) {
     const idx = STEP_BLOCKS.push(plainSteps) - 1;
-    return `<div class="steps-group" dir="rtl">
+    return `<div class="steps-group" dir="${t.dir}">
         <div class="steps-bar">
             <button class="steps-copy" onclick="copySteps(${idx})" title="${esc(t.copySteps)}">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
