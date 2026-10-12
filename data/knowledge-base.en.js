@@ -913,7 +913,7 @@ Just inform the customer to deposit the card price + delivery fees after you loo
     title: 'Available Payment Bracelet Colours',
     content: `The payment bracelet colours currently available, from right to left:
 • Red
-• Beige
+• Pink
 • Light blue
 • Purple
 • Grey
