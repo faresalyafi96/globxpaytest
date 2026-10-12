@@ -1172,7 +1172,6 @@ Object.entries(customerInfoForms).forEach(([key, f]) => {
         summary: makeSummary(f.steps[0]),
         content: f.steps.join('\n'),   /* للبحث فقط — الخطوات تُعرض من steps */
         steps: f.steps,
-        ltrSteps: true,   /* الخطوات إنجليزية: تُعرض من اليسار لليمين بترقيم إنجليزي */
         file: f.file,
         tags: makeTags(f.title, 'تعديل معلومات العميل'),
         images: []
