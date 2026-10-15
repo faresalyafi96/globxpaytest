@@ -35,6 +35,25 @@ const CATEGORIES_EN = {
 
 const ARTICLES_EN = {
 
+/* ----------------------- Customer information forms ---------------------- */
+'customerInfo.undertaking': {
+    title: 'Undertaking Form',
+    content: `If the identity card has a broken corner, unclear text, faded numbers, or is damaged or expired:
+
+1. Provide the customer with the undertaking form and ask them to submit supporting documents, such as a driving licence or passport.
+2. Email the Compliance Department with the subject: "Document Renewal Undertaking – [Name] – Mobile Number: [Number]". CC Operation/Customer Support.
+3. If the documents must be re-entered, email Operations with the subject: "IDWise Deactivation Request – [Name] – Mobile Number: [Number]".`
+},
+
+'customerInfo.phoneNumberChange': {
+    title: 'Phone Number Change Request Form',
+    content: `1. Verify the customer's identity.
+2. Ask the customer to complete the phone number change form.
+3. Ask the customer to provide copies of both the front and back of their ID.
+4. Email the Compliance Department with the subject: "Phone Number Change Request – [Name] – Mobile Number: [Number]". CC Operation/Customer Support.`
+},
+
+
 /* ------------------------------ About GlobXpay ----------------------------- */
 'company.whoWeAre': {
     title: 'Who We Are',
