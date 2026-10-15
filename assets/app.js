@@ -109,6 +109,11 @@ function aContent(a) {
 }
 
 function aSteps(a) {
+    if (lang === 'en' && a.category === 'customerInfo' &&
+        typeof CUSTOMER_INFO_STEPS_EN !== 'undefined' &&
+        CUSTOMER_INFO_STEPS_EN[a.id]) {
+        return CUSTOMER_INFO_STEPS_EN[a.id];
+    }
     if (lang === 'en' && a.category === 'forms' && typeof FORM_STEPS_EN !== 'undefined') {
         if (a.file && FORM_STEPS_EN[a.file]) return FORM_STEPS_EN[a.file];
     }
