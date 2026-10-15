@@ -984,3 +984,20 @@ const FORM_STEPS_EN = {
         'Make sure to select the correct sheet for the entity the customer belongs to before quoting a price'
     ]
 };
+
+
+/* Customer information form steps — English translations */
+const CUSTOMER_INFO_STEPS_EN = {
+    'customerInfo.undertaking': [
+        'Use this form when the identity card has a broken corner, the text is unclear, the numbers are faded, or the card is damaged or expired.',
+        'Provide the customer with the undertaking form and ask them to submit supporting documents, such as a driving licence or passport.',
+        'Email the Compliance Department with the subject: "Document Renewal Undertaking – [Name] – Mobile Number: [Number]". CC Operation/Customer Support.',
+        'If the documents need to be entered again, email Operations with the subject: "IDWise Deactivation Request – [Name] – Mobile Number: [Number]".'
+    ],
+    'customerInfo.phoneNumberChange': [
+        "Verify the customer's identity.",
+        'Ask the customer to complete the phone number change form.',
+        'Ask the customer to provide copies of both the front and back of their ID.',
+        'Email the Compliance Department with the subject: "Phone Number Change Request – [Name] – Mobile Number: [Number]". CC Operation/Customer Support.'
+    ]
+};
