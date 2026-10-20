@@ -6,7 +6,7 @@
 const I18N = {
     ar: {
         dir: 'rtl', lang: 'ar',
-        brand: 'GlobXpay Knowledge Base',
+        brand: 'Portal/Front/Back',
         brandSub: 'قاعدة المعرفة للموظفين',
 
         navHome: 'الرئيسية',
@@ -77,7 +77,7 @@ const I18N = {
 
     en: {
         dir: 'ltr', lang: 'en',
-        brand: 'GlobXpay Knowledge Base',
+        brand: 'Portal/Front/Back',
         brandSub: 'Employee Knowledge Base',
 
         navHome: 'Home',
