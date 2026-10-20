@@ -27,7 +27,7 @@ const CATEGORIES_EN = {
     troubleshooting: { title: 'Troubleshooting',        description: 'Solutions to common customer issues' },
     contact:         { title: 'Contact Information',    description: 'How to reach the support team' },
     valetaxGuide:    { title: 'Valetax Guide',          description: 'Guidance specific to the Valetax service' },
-    guides:          { title: 'System Guides',          description: 'Step-by-step guides for Portal, Front and Back' },
+    guides:          { title: 'Front/Back/Portal System',          description: 'Step-by-step guides for Portal, Front and Back' },
     media:           { title: 'Images',                 description: 'Ready-to-send images you can copy for customers' },
     forms:           { title: 'Forms & Files',          description: 'Forms and files ready to download' },
     customerInfo:    { title: 'Edit Customer Information (Undertaking / Number Change / IDWise)', description: 'Forms and procedures for updating customer details and documents' }
