@@ -923,6 +923,22 @@ const optionsContent = {
                 hasImages: true,
                 images: ['Front guid pictures/Unblock card PIN/1pinu.png', 'Front guid pictures/Unblock card PIN/2pinu.png', 'Front guid pictures/Unblock card PIN/3pinu.png', 'Front guid pictures/Unblock card PIN/4pinu.png', 'Front guid pictures/Unblock card PIN/5pinu.png']
             },
+            editCustomerInfo: {
+                title: 'Edit Customer Info',
+                content: `1- الدخول إلى Prepaid
+2- اختيار Card Details
+3- من القائمة المنسدلة اختر Last 4 Digits
+4- إدخال آخر 4 أرقام من رقم البطاقة
+5- الضغط على Next
+6- نسخ رقم البطاقة الكامل
+7- الدخول إلى Edit Customer Info
+8- إدخال رقم البطاقة الكامل
+9- اختيار البطاقة
+10- الضغط على Next
+11- إدخال رقم هاتف العميل لربطه`,
+                hasImages: true,
+                images: ['Front guid pictures/Edit Customer Info/1.png', 'Front guid pictures/Edit Customer Info/2.png', 'Front guid pictures/Edit Customer Info/3.png', 'Front guid pictures/Edit Customer Info/4.png', 'Front guid pictures/Edit Customer Info/5.png', 'Front guid pictures/Edit Customer Info/6.png']
+            },
             activateCard: {
                 title: 'Activate Card',
                 content: `1- الدخول إلى Prepaid
