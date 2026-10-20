@@ -885,6 +885,21 @@ Just inform the customer to deposit the card price + delivery fees after you loo
 9- Click the arrow at the top of the box to send the request`
 },
 
+'guides.front.editCustomerInfo': {
+    title: 'Front — Edit Customer Info',
+    content: `1. Open Prepaid.
+2. Select Card Details.
+3. From the dropdown, select Last 4 Digits.
+4. Enter the last 4 digits of the card number.
+5. Click Next.
+6. Copy the full card number.
+7. Open Edit Customer Info.
+8. Enter the full card number.
+9. Select the card.
+10. Click Next.
+11. Enter the customer's phone number to link it.`
+},
+
 'guides.front.activateCard': {
     title: 'Front — Activate Card',
     content: `1- Go to Prepaid
