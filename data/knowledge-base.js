@@ -937,7 +937,7 @@ const optionsContent = {
 10- الضغط على Next
 11- إدخال رقم هاتف العميل لربطه`,
                 hasImages: true,
-                images: ['Front guid pictures/Edit Customer Info/1.png', 'Front guid pictures/Edit Customer Info/2.png', 'Front guid pictures/Edit Customer Info/3.png', 'Front guid pictures/Edit Customer Info/4.png', 'Front guid pictures/Edit Customer Info/5.png', 'Front guid pictures/Edit Customer Info/6.png']
+                images: ['Front guid pictures/EditCustomerInfo/1.png', 'Front guid pictures/EditCustomerInfo/2.png', 'Front guid pictures/EditCustomerInfo/3.png', 'Front guid pictures/EditCustomerInfo/4.png', 'Front guid pictures/EditCustomerInfo/5.png', 'Front guid pictures/EditCustomerInfo/6.png']
             },
             activateCard: {
                 title: 'Activate Card',
