@@ -6,7 +6,7 @@
 const I18N = {
     ar: {
         dir: 'rtl', lang: 'ar',
-        brand: 'Portal/Front/Back',
+        brand: 'قاعدة المعرفة',
         brandSub: 'قاعدة المعرفة للموظفين',
 
         navHome: 'الرئيسية',
@@ -77,7 +77,7 @@ const I18N = {
 
     en: {
         dir: 'ltr', lang: 'en',
-        brand: 'Portal/Front/Back',
+        brand: 'Knowledge Base',
         brandSub: 'Employee Knowledge Base',
 
         navHome: 'Home',
