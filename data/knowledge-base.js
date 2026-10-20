@@ -1085,7 +1085,7 @@ const GUIDE_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" s
 
 CATEGORIES.push({
     id: 'guides',
-    title: 'أدلة الأنظمة',
+    title: 'نظام الفرونت/الباك/البورتال',
     description: 'خطوات مصوّرة لاستخدام Portal و Front و Back',
     icon: GUIDE_ICON
 });
