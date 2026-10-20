@@ -1083,11 +1083,14 @@ Object.entries(knowledgeBase).forEach(([catId, cat]) => {
 /* ---------- أدلة الأنظمة ---------- */
 const GUIDE_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>';
 
-CATEGORIES.push({
-    id: 'guides',
-    title: 'نظام الفرونت/الباك/البورتال',
-    description: 'خطوات مصوّرة لاستخدام Portal و Front و Back',
-    icon: GUIDE_ICON
+['front', 'back', 'portal'].forEach(sysId => {
+    const sys = optionsContent[sysId];
+    CATEGORIES.push({
+        id: sysId,
+        title: sys.title,
+        description: 'خطوات مصوّرة لاستخدام ' + sys.title,
+        icon: GUIDE_ICON
+    });
 });
 
 Object.entries(optionsContent).forEach(([sysId, sys]) => {
@@ -1096,12 +1099,12 @@ Object.entries(optionsContent).forEach(([sysId, sys]) => {
         const label = subId === '_' ? sys.title : sys.title + ' — ' + sub.title;
         ARTICLES.push({
             id: 'guides.' + sysId + (subId === '_' ? '' : '.' + subId),
-            category: 'guides',
+            category: sysId,
             system: sys.title,
             title: label,
             summary: makeSummary(sub.content),
             content: sub.content,
-            tags: makeTags(sub.title + ' ' + sys.title, 'أدلة الأنظمة'),
+            tags: makeTags(sub.title + ' ' + sys.title, sys.title),
             images: (sub.hasImages && sub.images) ? sub.images : []
         });
     });
@@ -1232,7 +1235,7 @@ const CATEGORY_GROUPS = [
     { id: 'moneyGroup',    ids: ['cashIn', 'cashOut', 'transfers', 'saudiExchange'] },
     { id: 'cardsGroup',    ids: ['cards', 'braceletLink'] },
     { id: 'rulesGroup',    ids: ['fees', 'policies'] },
-    { id: 'refGroup',      ids: ['company', 'guides', 'forms', 'media', 'valetaxGuide'] }
+    { id: 'refGroup',      ids: ['company', 'front', 'back', 'portal', 'forms', 'media', 'valetaxGuide'] }
 ];
 
 /* ترتيب مسطّح يضمن ظهور أي قسم غير مُصنّف */
