@@ -18,7 +18,7 @@ const I18N = {
         refGroup: 'مراجع وأدلة',
         navFaq: 'الأسئلة الشائعة',
         navForms: 'النماذج والملفات',
-        navGuides: 'أدلة الأنظمة',
+        navGuides: 'Portal/Front/Back System',
         navContact: 'تواصل معنا',
 
         heroTitle: 'مرحباً بك في قاعدة معرفة GlobXpay',
@@ -89,7 +89,7 @@ const I18N = {
         refGroup: 'References & Guides',
         navFaq: 'FAQ',
         navForms: 'Forms & Files',
-        navGuides: 'System Guides',
+        navGuides: 'Portal/Front/Back System',
         navContact: 'Contact',
 
         heroTitle: 'Welcome to the GlobXpay Knowledge Base',
