@@ -796,7 +796,8 @@ d="M12 4v16m8-8H4"/>
 
     content: {
 createAccount: {
-    title: "كيفية إنشاء الحساب",
+    title: "كيفية انشاء حساب Valetax",
+    category: "accountCreation",
     content: `
 -قم بإنشاء حساب Valetax من موقعهم الالكتروني 
 -وبعد انشاء الحساب يوجد خيار اسمه "Pay With Globxpay Wallet" من موقعهم
@@ -1086,7 +1087,7 @@ Object.entries(knowledgeBase).forEach(([catId, cat]) => {
     Object.entries(cat.content).forEach(([itemId, item]) => {
         ARTICLES.push({
             id: catId + '.' + itemId,
-            category: catId,
+            category: item.category || catId,
             title: item.title,
             summary: makeSummary(item.content),
             content: item.content,
