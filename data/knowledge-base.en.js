@@ -780,7 +780,7 @@ Troubleshooting steps:
 
 /* ------------------------------ Valetax Guide ------------------------------ */
 'valetaxGuide.createAccount': {
-    title: 'How to Create the Account',
+    title: 'How to Create a Valetax Account',
     content: `
 - Create a Valetax account from their website
 - After creating the account, there is an option called "Pay With Globxpay Wallet" on their site
