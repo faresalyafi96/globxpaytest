@@ -779,7 +779,7 @@ Troubleshooting steps:
 },
 
 /* ------------------------------ Valetax Guide ------------------------------ */
-'valetaxGuide.createAccount': {
+'accountCreation.valetaxAccount': {
     title: 'How to Create a Valetax Account',
     content: `
 - Create a Valetax account from their website
