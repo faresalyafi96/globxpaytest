@@ -138,7 +138,7 @@ const knowledgeBase = {
 -بعد تنزيل التطبيق قم بوضع اسم الشركة "Valetax"وبعدها "Log in by reference number" 
 -بعد ان تقوم بوضع معلوماتك و تكمل باقي الخطوات جميعها سيتم تفعيل حسابك خلال 24 ساعة 
 `
-            },,
+            },
             mainAccount: {
                 title: "إنشاء الحساب الرئيسي",
                 content: `خطوات إنشاء حساب على GLOBXPAY:
