@@ -129,6 +129,16 @@ const knowledgeBase = {
         title: "إنشاء الحسابات",
         icon: `<svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>`,
         content: {
+            valetaxAccount: {
+                title: "كيفية انشاء حساب Valetax",
+                content: `
+            -قم بإنشاء حساب Valetax من موقعهم الالكتروني 
+            -وبعد انشاء الحساب يوجد خيار اسمه "Pay With Globxpay Wallet" من موقعهم
+            -سيتم ارسال لك رابط يمكنك من خلالها تحميل المتجر
+            -بعد تنزيل التطبيق قم بوضع اسم الشركة "Valetax"وبعدها "Log in by reference number" 
+            -بعد ان تقوم بوضع معلوماتك و تكمل باقي الخطوات جميعها سيتم تفعيل حسابك خلال 24 ساعة 
+            `
+            },,
             mainAccount: {
                 title: "إنشاء الحساب الرئيسي",
                 content: `خطوات إنشاء حساب على GLOBXPAY:
@@ -795,18 +805,6 @@ d="M12 4v16m8-8H4"/>
     </svg>`,
 
     content: {
-createAccount: {
-    title: "كيفية انشاء حساب Valetax",
-    category: "accountCreation",
-    content: `
--قم بإنشاء حساب Valetax من موقعهم الالكتروني 
--وبعد انشاء الحساب يوجد خيار اسمه "Pay With Globxpay Wallet" من موقعهم
--سيتم ارسال لك رابط يمكنك من خلالها تحميل المتجر
--بعد تنزيل التطبيق قم بوضع اسم الشركة "Valetax"وبعدها "Log in by reference number" 
--بعد ان تقوم بوضع معلوماتك و تكمل باقي الخطوات جميعها سيتم تفعيل حسابك خلال 24 ساعة 
-`
-},
-
 cardCost: {
     title: "تكلفة إصدار البطاقة و الإجراءات المطلوبة",
     content: `
@@ -1087,7 +1085,7 @@ Object.entries(knowledgeBase).forEach(([catId, cat]) => {
     Object.entries(cat.content).forEach(([itemId, item]) => {
         ARTICLES.push({
             id: catId + '.' + itemId,
-            category: item.category || catId,
+            category: catId,
             title: item.title,
             summary: makeSummary(item.content),
             content: item.content,
