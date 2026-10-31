@@ -453,6 +453,7 @@ main { flex: 1; padding: 28px 20px 56px; }
 /* مجموعة خطوات + زر نسخها */
 .steps-group { position: relative; margin-bottom: 15px; }
 .steps-group > ol { margin-bottom: 0; }
+.table-group > .table-wrap { margin-bottom: 0; }
 
 .steps-bar { display: flex; justify-content: flex-start; margin-bottom: 6px; }
 

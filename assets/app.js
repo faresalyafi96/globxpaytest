@@ -123,7 +123,9 @@ function aSteps(a) {
 function aSummary(a) {
     const c = aContent(a);
     if (c === a.content) return a.summary;
-    const clean = String(c).replace(/\s+/g, ' ').trim();
+    const clean = String(c).split('\n')
+        .filter(l => !/^\s*\|.*\|\s*$/.test(l))
+        .join(' ').replace(/\s+/g, ' ').trim();
     const cut = clean.slice(0, 130);
     return clean.length > 130 ? cut.slice(0, cut.lastIndexOf(' ')) + '\u2026' : clean;
 }
@@ -305,20 +307,36 @@ function highlight(text, query) {
 /* ============================== تنسيق المحتوى ============================== */
 /* سجل قوائم الخطوات في الصفحة الحالية — يُستخدم لنسخها بنص نظيف */
 let STEP_BLOCKS = [];
+/* سجل الجداول في الصفحة الحالية — { head, body } لنسخها كجدول أو كنص */
+let TABLE_BLOCKS = [];
+
+/* شريط زر النسخ المشترك بين الخطوات والجداول */
+function copyBar(onclick, label) {
+    return `<div class="steps-bar">
+            <button class="steps-copy" onclick="${onclick}" title="${esc(label)}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="11" height="11" rx="2"/>
+                    <path d="M5 15V5a2 2 0 012-2h10" stroke-linecap="round"/>
+                </svg>
+                <span>${esc(label)}</span>
+            </button>
+        </div>`;
+}
 
 /* غلاف قائمة خطوات مع زر نسخ */
 function stepsGroup(innerHtml, plainSteps) {
     const idx = STEP_BLOCKS.push(plainSteps) - 1;
     return `<div class="steps-group" dir="${t.dir}">
-        <div class="steps-bar">
-            <button class="steps-copy" onclick="copySteps(${idx})" title="${esc(t.copySteps)}">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="9" y="9" width="11" height="11" rx="2"/>
-                    <path d="M5 15V5a2 2 0 012-2h10" stroke-linecap="round"/>
-                </svg>
-                <span>${esc(t.copySteps)}</span>
-            </button>
-        </div>
+        ${copyBar(`copySteps(${idx})`, t.copySteps)}
+        ${innerHtml}
+    </div>`;
+}
+
+/* غلاف جدول مع زر نسخ */
+function tableGroup(innerHtml, head, body) {
+    const idx = TABLE_BLOCKS.push({ head, body }) - 1;
+    return `<div class="steps-group table-group" dir="${t.dir}">
+        ${copyBar(`copyTable(${idx})`, t.copyTable)}
         ${innerHtml}
     </div>`;
 }
@@ -339,10 +357,10 @@ function formatContent(text, query) {
             const cells = r => r.slice(1, -1).split('|').map(c => c.trim());
             const head = cells(buffer[0]);
             const body = buffer.slice(1).map(cells);
-            html += `<div class="table-wrap"><table>` +
+            html += tableGroup(`<div class="table-wrap"><table>` +
                 `<thead><tr>${head.map(c => `<th dir="auto">${query ? highlight(c, query) : esc(c)}</th>`).join('')}</tr></thead>` +
                 `<tbody>${body.map(r => `<tr>${r.map(c => `<td dir="auto">${query ? highlight(c, query) : esc(c)}</td>`).join('')}</tr>`).join('')}</tbody>` +
-                `</table></div>`;
+                `</table></div>`, head, body);
         } else if (mode === 'ul') {
             html += '<ul>' + buffer.map(x =>
                 `<li><span class="b"></span><span dir="auto">${query ? highlight(x, query) : esc(x)}</span></li>`
@@ -479,6 +497,7 @@ function route() {
     const [path, rawQ] = hash.split('?');
     const parts = path.split('/').filter(Boolean);
     STEP_BLOCKS = [];   /* سجل جديد لكل صفحة */
+    TABLE_BLOCKS = [];
     closeDrawer();
 
     if (parts[0] === 'category' && parts[1]) return viewCategory(parts[1]);
@@ -847,6 +866,34 @@ function copySteps(idx) {
     const block = STEP_BLOCKS[idx];
     if (!block) return;
     copyText(block.join('\n'), t.copiedSteps);
+}
+
+/* نسخ جدول بصيغتين معاً:
+   - نص مقروء (كل صف فقرة: الاسم ثم "العمود: القيمة") للّصق في واتساب والمحادثات
+   - جدول HTML للّصق في Excel / Word / البريد مع بقاء الأعمدة */
+function copyTable(idx) {
+    const block = TABLE_BLOCKS[idx];
+    if (!block) return;
+    const { head, body } = block;
+
+    const plain = body.map(r =>
+        [r[0], ...r.slice(1).map((c, i) => `${head[i + 1]}: ${c}`)].join('\n')
+    ).join('\n\n');
+
+    const html = `<table dir="${t.dir}" border="1" cellpadding="6" style="border-collapse:collapse">` +
+        `<thead><tr>${head.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead>` +
+        `<tbody>${body.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody>` +
+        `</table>`;
+
+    if (navigator.clipboard && window.ClipboardItem && window.isSecureContext) {
+        navigator.clipboard.write([new ClipboardItem({
+            'text/plain': new Blob([plain], { type: 'text/plain' }),
+            'text/html':  new Blob([html],  { type: 'text/html' })
+        })]).then(() => toast(t.copiedTable))
+            .catch(() => copyText(plain, t.copiedTable));
+    } else {
+        copyText(plain, t.copiedTable);
+    }
 }
 
 let toastTimer;

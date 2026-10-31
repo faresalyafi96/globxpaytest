@@ -35,6 +35,19 @@ const CATEGORIES_EN = {
     customerInfo:    { title: 'Edit Customer Information (Undertaking / Number Change / IDWise)', description: 'Forms and procedures for updating customer details and documents' }
 };
 
+/* English copy of BRACELET_PRICES_TABLE — used by 'fees.braceletPrices' and
+   'media.braceletColours'. Keep in sync with the Arabic table.
+   أسماء المدارس تبقى بالعربية — أسماء أعلام لمؤسسات حقيقية،
+   وترجمتها تخميناً قد تجعل الموظف يقتبس سعر مدرسة أخرى. */
+const BRACELET_PRICES_TABLE_EN = `| School | Selling price per student | Discount |
+| مدارس العالمية | 10 JOD | None |
+| مدارس الاتفاق الدولية | 10 JOD | 50% discount for 3 weeks, bringing the price to 5 JOD |
+| Mindlab | 10 JOD | None |
+| مدارس مدى الدولية | 10 JOD | Sibling discount: first student 10 JOD per card, second student and above 8 JOD per card |
+| مدارس السعادة | 10 JOD | None |
+| مدارس الجامعة | 10 JOD | 50% discount, bringing the price to 5 JOD |
+| مدرسة الحكمة | 8 JOD when buying a single bracelet only | A discount applies when buying more than one bracelet, bringing the bracelet price to 7 JOD after the sibling discount |`;
+
 const ARTICLES_EN = {
 
 /* ----------------------- Customer information forms ---------------------- */
@@ -206,20 +219,12 @@ Welcome, dear customer, as a GlobXpay app user! 😊`
 8. Enter your personal information`
 },
 
-/* ملاحظة: أسماء المدارس تبقى بالعربية — أسماء أعلام لمؤسسات حقيقية،
-   وترجمتها تخميناً قد تجعل الموظف يقتبس سعر مدرسة أخرى. */
+/* أسماء المدارس تبقى بالعربية — انظر BRACELET_PRICES_TABLE_EN أعلى الملف */
 'fees.braceletPrices': {
     title: 'Bracelet Prices',
     content: `Bracelet selling prices by school:
 
-| School | Selling price per student | Discount |
-| مدارس العالمية | 10 JOD | None |
-| مدارس الاتفاق الدولية | 10 JOD | 50% discount for 3 weeks, bringing the price to 5 JOD |
-| Mindlab | 10 JOD | None |
-| مدارس مدى الدولية | 10 JOD | Sibling discount: first student 10 JOD per card, second student and above 8 JOD per card |
-| مدارس السعادة | 10 JOD | None |
-| مدارس الجامعة | 10 JOD | 50% discount, bringing the price to 5 JOD |
-| مدرسة الحكمة | 8 JOD | A discount applies when buying more than one unit, bringing the unit price to 7 JOD |`
+${BRACELET_PRICES_TABLE_EN}`
 },
 
 'accountCreation.supplementaryAccount': {
@@ -974,8 +979,12 @@ Just inform the customer to deposit the card price + delivery fees after you loo
 },
 
 'media.braceletColours': {
-    title: 'Available Payment Bracelet Colours',
-    content: `The payment bracelet colours currently available, from right to left:
+    title: 'Payment Bracelet Prices & Available Colours',
+    content: `Bracelet selling prices by school:
+
+${BRACELET_PRICES_TABLE_EN}
+
+The payment bracelet colours currently available, from right to left:
 • Red
 • Pink
 • Light blue

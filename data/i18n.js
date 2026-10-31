@@ -55,6 +55,8 @@ const I18N = {
         copiedImage: 'تم نسخ الصورة',
         imageDownloaded: 'تم تنزيل الصورة (المتصفح لا يدعم النسخ المباشر)',
         copiedSteps: 'تم نسخ الخطوات',
+        copyTable: 'نسخ الجدول',
+        copiedTable: 'تم نسخ الجدول',
         download: 'تنزيل',
         backHome: 'العودة للرئيسية',
 
@@ -126,6 +128,8 @@ const I18N = {
         copiedImage: 'Image copied',
         imageDownloaded: 'Image downloaded (your browser does not support direct copying)',
         copiedSteps: 'Steps copied',
+        copyTable: 'Copy table',
+        copiedTable: 'Table copied',
         download: 'Download',
         backHome: 'Back to home',
 
