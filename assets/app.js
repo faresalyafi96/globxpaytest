@@ -335,6 +335,14 @@ function formatContent(text, query) {
                 `<li><span class="n">${x.n}</span><span dir="auto">${query ? highlight(x.txt, query) : esc(x.txt)}</span></li>`
             ).join('') + '</ol>';
             html += stepsGroup(list, buffer.map(x => `${x.n}. ${x.txt}`));
+        } else if (mode === 'table') {
+            const cells = r => r.slice(1, -1).split('|').map(c => c.trim());
+            const head = cells(buffer[0]);
+            const body = buffer.slice(1).map(cells);
+            html += `<div class="table-wrap"><table>` +
+                `<thead><tr>${head.map(c => `<th dir="auto">${query ? highlight(c, query) : esc(c)}</th>`).join('')}</tr></thead>` +
+                `<tbody>${body.map(r => `<tr>${r.map(c => `<td dir="auto">${query ? highlight(c, query) : esc(c)}</td>`).join('')}</tr>`).join('')}</tbody>` +
+                `</table></div>`;
         } else if (mode === 'ul') {
             html += '<ul>' + buffer.map(x =>
                 `<li><span class="b"></span><span dir="auto">${query ? highlight(x, query) : esc(x)}</span></li>`
@@ -364,11 +372,21 @@ function formatContent(text, query) {
             }
         }
 
+        /* صف جدول: | خلية | خلية | — وسطر الفصل |---|---| يُتجاهل */
+        const isRow = line.startsWith('|') && line.endsWith('|') && line.length > 2;
+        const isSep = isRow && /^\|[\s|:-]+\|$/.test(line);
+
         const mBul  = line.match(/^[•·*]\s*(.+)$/);
         const isWarn = /^[⚠️🚨❗️‼️]/.test(line);
         const isHead = /[:：]$/.test(line) && line.length < 70 && !mNum && !mBul;
 
-        if (isWarn) {
+        if (isSep) {
+            return;                       /* سطر فصل ماركداون — لا يُعرض */
+        } else if (isRow) {
+            if (mode !== 'table') flush();
+            mode = 'table';
+            buffer.push(line);
+        } else if (isWarn) {
             flush();
             html += `<div class="callout"><span>${query ? highlight(line, query) : esc(line)}</span></div>`;
         } else if (isHead) {
