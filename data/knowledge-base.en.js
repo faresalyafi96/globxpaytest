@@ -171,7 +171,7 @@ Cashback rules:
     title: 'Opening the Main Account',
     content: `Steps to open an account on GLOBXPAY:
 
-1- Enter the word "Globx" in the "Enter the company name" search field
+1- Select the name of the school or company you belong to in the "Enter the company name" search field
 2- Tap Create Account, then enter your phone number and choose where the verification code should be sent (SMS or WhatsApp)
 3- Enter the verification code you receive
 4- Accept the terms and conditions, then continue
@@ -192,6 +192,34 @@ Important notes:
 👉 As soon as you download the app and register your details, a main EZ account is opened for you automatically with no minimum balance.
 
 Welcome, dear customer, as a GlobXpay app user! 😊`
+},
+
+'accountCreation.atfxFirstTime': {
+    title: 'First-time Registration Steps for ATFX Customers',
+    content: `1. Enter the word "ATFX" in the "Enter the company name" search field
+2. Tap "Log in by reference number", then enter your phone number and choose where the verification code should be sent (SMS)
+3. Enter the verification code you receive
+4. Accept the terms and conditions, then continue
+5. Create your password and confirm it
+6. Photograph your ID from the front and the back
+7. Take a selfie so your photo can be compared with your ID
+8. Enter your personal information`
+},
+
+/* ملاحظة: أسماء المدارس تبقى بالعربية — أسماء أعلام لمؤسسات حقيقية،
+   وترجمتها تخميناً قد تجعل الموظف يقتبس سعر مدرسة أخرى. */
+'fees.braceletPrices': {
+    title: 'Bracelet Prices',
+    content: `Bracelet selling prices by school:
+
+| School | Selling price per student | Discount |
+| مدارس العالمية | 10 JOD | None |
+| مدارس الاتفاق الدولية | 10 JOD | 50% discount for 3 weeks, bringing the price to 5 JOD |
+| Mindlab | 10 JOD | None |
+| مدارس مدى الدولية | 10 JOD | Sibling discount: first student 10 JOD per card, second student and above 8 JOD per card |
+| مدارس السعادة | 10 JOD | None |
+| مدارس الجامعة | 10 JOD | 50% discount, bringing the price to 5 JOD |
+| مدرسة الحكمة | 8 JOD | A discount applies when buying more than one unit, bringing the unit price to 7 JOD |`
 },
 
 'accountCreation.supplementaryAccount': {
