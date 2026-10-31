@@ -417,6 +417,27 @@ main { flex: 1; padding: 28px 20px 56px; }
     flex-shrink: 0; width: 5px; height: 5px; margin-top: 13px;
     border-radius: 50%; background: var(--ink-3);
 }
+/* جداول داخل المقالات */
+.table-wrap { overflow-x: auto; margin: 0 0 16px; -webkit-overflow-scrolling: touch; }
+.prose table {
+    width: 100%; border-collapse: collapse;
+    font-size: 14.5px; min-width: 420px;
+    border: 1px solid var(--line); border-radius: var(--r-sm); overflow: hidden;
+}
+.prose thead th {
+    background: var(--brand-light); color: var(--ink-1);
+    font-weight: 600; font-size: 13.5px;
+    text-align: start; padding: 11px 14px;
+    border-bottom: 1px solid var(--line); white-space: nowrap;
+}
+.prose tbody td {
+    padding: 11px 14px; text-align: start;
+    border-bottom: 1px solid var(--line-2); color: var(--prose); line-height: 1.6;
+}
+.prose tbody tr:last-child td { border-bottom: 0; }
+.prose tbody tr:hover td { background: var(--row-hover); }
+.prose tbody td:first-child { font-weight: 600; color: var(--ink-1); }
+
 .prose .callout {
     display: flex; gap: 10px; align-items: flex-start;
     background: var(--warn-bg); border: 1px solid var(--warn-line);
