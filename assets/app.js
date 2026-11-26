@@ -323,8 +323,12 @@ function copyBar(onclick, label) {
         </div>`;
 }
 
+/* إظهار زر "نسخ الخطوات" — يُخفى في مواضيع قسم حل المشاكل */
+let SHOW_STEP_COPY = true;
+
 /* غلاف قائمة خطوات مع زر نسخ */
 function stepsGroup(innerHtml, plainSteps) {
+    if (!SHOW_STEP_COPY) return `<div class="steps-group" dir="${t.dir}">${innerHtml}</div>`;
     const idx = STEP_BLOCKS.push(plainSteps) - 1;
     return `<div class="steps-group" dir="${t.dir}">
         ${copyBar(`copySteps(${idx})`, t.copySteps)}
@@ -498,6 +502,7 @@ function route() {
     const parts = path.split('/').filter(Boolean);
     STEP_BLOCKS = [];   /* سجل جديد لكل صفحة */
     TABLE_BLOCKS = [];
+    SHOW_STEP_COPY = true;
     closeDrawer();
 
     if (parts[0] === 'category' && parts[1]) return viewCategory(parts[1]);
@@ -657,6 +662,8 @@ function viewArticle(id) {
     const licenseBtn = a.category === 'company'
         ? `<a class="btn btn-ghost" href="globxpaypres.pdf" download>${ICON.down} ${esc(t.download)} PDF</a>` : '';
 
+    SHOW_STEP_COPY = a.category !== 'troubleshooting';
+
     const artSteps = aSteps(a);
     /* خطوات إنجليزية (ltrSteps): كتلة كاملة من اليسار لليمين بعنوان وترقيم إنجليزي */
     const ltr = !!a.ltrSteps;
@@ -726,6 +733,7 @@ function accFaq(f, i) {
 function viewFaq() {
     markActiveNav('faq');
     $('topbarTitle').textContent = t.navFaq;
+    SHOW_STEP_COPY = false;   /* الأسئلة الشائعة مبنية من مواضيع حل المشاكل */
 
     $('view').innerHTML = `
         <div class="wrap">
